@@ -23,12 +23,13 @@ public class portaldenuncias {
 		comunicacion[1][1] = "3186517640 - 3219113875 - 3114671293";
 
 		persona[] pArray = new persona[max_usuarios];
-		persona[] temporalArray= new persona[max_usuarios];
+		persona[] temporalArray = new persona[max_usuarios];
 
 		do {
 			persona pu = new persona();
 
-			System.out.println("Bienvenido a tu denUNcia, el portal diseñado por y para que los estudiantes sean atendidos oportunamente");
+			System.out.println(
+					"Bienvenido a tu denUNcia, el portal diseñado por y para que los estudiantes sean atendidos oportunamente");
 			System.out.println(" ¿Desea acceder a las funciones avanzadas como administrador?(SI o NO)");
 
 			String inicio = lector.nextLine();
@@ -54,40 +55,75 @@ public class portaldenuncias {
 
 						String orden = lector.nextLine();
 						if (orden.equalsIgnoreCase("FECHA DE RECEPCION DE LA DENUNCIA")) {
-							do{
-								contador=0;
-								int temporal;
-								for (int c = 0, d = 1; c < pArray.length; c++, d++) {
-									persona cp = new persona();
-									persona cd = new persona();
+							System.out.println("Desea ordenar por \"MAS RECIENTES PRIMERO\" o \"MAS ANTIGUOS PRIMERO\"");
+							String orden_fecha = lector.nextLine();
+							if (orden_fecha.equalsIgnoreCase("MAS ANTIGUOS PRIMERO")) {
+								do {
+									contador = 0;
+									int temporal;
+									for (int c = 0, d = 1; c < pArray.length; c++, d++) {
+										persona cp = new persona();
+										persona cd = new persona();
 
-									if ((pArray[c] != null) && (pArray[d] != null)) {
-										if (cp.getFecha(pArray[c].fecha).before(cd.getFecha(pArray[d].fecha))) {
-										} else if (cp.getFecha(pArray[c].fecha).after(cd.getFecha(pArray[d].fecha))) {
-											temporal = d;
-											temporalArray[temporal] = pArray[d];
-											pArray[d] = pArray[c];
-											pArray[c] = temporalArray[temporal];
-											contador++;
+										if ((pArray[c] != null) && (pArray[d] != null)) {
+											if (cp.getFecha(pArray[c].fecha).before(cd.getFecha(pArray[d].fecha))) {
+											} else if (cp.getFecha(pArray[c].fecha).after(cd.getFecha(pArray[d].fecha))) {
+												temporal = d;
+												temporalArray[temporal] = pArray[d];
+												pArray[d] = pArray[c];
+												pArray[c] = temporalArray[temporal];
+												contador++;
 
-										}
+											}
+										} else
+											break;
 									}
-									else
+								} while (contador > 0);
+
+								for (persona g : pArray) {
+									if (g != null) {
+										System.out.println("Denuncia presentada por \"" + g.nombre
+												+ "\", identificado con el documento \"" + g.cedula + "\", hecha en \""
+												+ g.ciudad + "\", el \"" + g.fecha + "\", cuya descripción es \""
+												+ g.descripcion + "\".");
+									} else
 										break;
 								}
-							} while (contador > 0);
 
-							for (persona g : pArray) {
-								if(g != null) {
-								System.out.println(
-										"Denuncia presentada por \"" + g.nombre + "\", identificado con el documento \""
-												+ g.cedula + "\", hecha en \"" + g.ciudad + "\", el \"" + g.fecha
-												+ "\", cuya descripción es \"" + g.descripcion + "\".");
-							}
-								else
-									break;
-							}
+							} else if (orden_fecha.equalsIgnoreCase("MAS RECIENTES PRIMERO")) {
+								do {
+									contador = 0;
+									int temporal;
+									for (int c = 0, d = 1; c < pArray.length; c++, d++) {
+										persona cp = new persona();
+										persona cd = new persona();
 
+										if ((pArray[c] != null) && (pArray[d] != null)) {
+											if (cp.getFecha(pArray[c].fecha).after(cd.getFecha(pArray[d].fecha))) {
+											} else if (cp.getFecha(pArray[c].fecha).before(cd.getFecha(pArray[d].fecha))) {
+												temporal = d;
+												temporalArray[temporal] = pArray[d];
+												pArray[d] = pArray[c];
+												pArray[c] = temporalArray[temporal];
+												contador++;
+
+											}
+										} else
+											break;
+									}
+								} while (contador > 0);
+
+								for (persona g : pArray) {
+									if (g != null) {
+										System.out.println("Denuncia presentada por \"" + g.nombre
+												+ "\", identificado con el documento \"" + g.cedula + "\", hecha en \""
+												+ g.ciudad + "\", el \"" + g.fecha + "\", cuya descripción es \""
+												+ g.descripcion + "\".");
+									} else
+										break;
+								}
+
+							}
 						}
 
 						break;
@@ -104,13 +140,15 @@ public class portaldenuncias {
 				}
 			}
 
-			else if(inicio.equalsIgnoreCase("no")){
+			else if (inicio.equalsIgnoreCase("no")) {
 
-				System.out.println(" Bienvenido al portal del sistema de denuncias, por favor ingrese sus nombres y sus apellidos ");
+				System.out.println(
+						" Bienvenido al portal del sistema de denuncias, por favor ingrese sus nombres y sus apellidos ");
 
 				pu.setNombre(lector.nextLine());
 
-				System.out.println(" Bienvenido, " + pu.getNombre(pu.nombre) + " ¿Desea ingresar una denuncia, consultar el estado de una,  cerrar sesión o solicitar ayuda ? ( RESPONDA CON \"consultar\", con \"denunciar\", o con \"ayuda\" según sea su caso ( sin espacios )) ");
+				System.out.println(" Bienvenido, " + pu.getNombre(pu.nombre)
+						+ " ¿Desea ingresar una denuncia, consultar el estado de una,  cerrar sesión o solicitar ayuda ? ( RESPONDA CON \"consultar\", con \"denunciar\", o con \"ayuda\" según sea su caso ( sin espacios )) ");
 
 				String respuesta = lector.nextLine();
 
@@ -140,7 +178,8 @@ public class portaldenuncias {
 
 				else if (respuesta.equalsIgnoreCase("denunciar")) {
 
-					System.out.println("Bienvenido al servicio de denuncias " + pu.nombre+ ", a continuación se iniciará el proceso para registrar una denuncia");
+					System.out.println("Bienvenido al servicio de denuncias " + pu.nombre
+							+ ", a continuación se iniciará el proceso para registrar una denuncia");
 
 					// for (tamano = 0; tamano <= usuario.length; tamano++){
 
@@ -148,7 +187,7 @@ public class portaldenuncias {
 					pu.setCedula(lector.nextInt());
 
 					String prueba = lector.nextLine();
-					
+
 					System.out.println("Digite su edad ");
 					pu.setEdad(lector.nextLine());
 
@@ -171,9 +210,9 @@ public class portaldenuncias {
 							+ "\" su edad: \"" + pu.edad + "\" la ciudad en que sucedio el problema:\"" + pu.ciudad
 							+ "\" su tipo de denuncia fue: \"" + pu.tipoDenuncia + "\"  lo que sucedio fue: \""
 							+ pu.descripcion + "\" y la fecha del registro de la denuncia es " + pu.fecha + "\" ");
- 
-					//do
-					
+
+					// do
+
 					System.out.println(
 							"Si estos son los datos correctos escriba SI (en mayusculas y sin espacios) o NO (en mayusculas y sin espacios) si hay algun error");
 
