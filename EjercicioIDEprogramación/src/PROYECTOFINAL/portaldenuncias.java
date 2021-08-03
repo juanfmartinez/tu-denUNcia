@@ -4,9 +4,11 @@ import java.util.*;
 
 public class portaldenuncias {
 
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner lector = new Scanner(System.in);
+
 		int i;
 
 		int max_usuarios = 10;
@@ -22,11 +24,11 @@ public class portaldenuncias {
 		comunicacion[1][0] = "Numero telefónico y mensaje de texto";
 		comunicacion[1][1] = "3186517640 - 3219113875 - 3114671293";
 
-		persona[] pArray = new persona[max_usuarios];
-		persona[] temporalArray = new persona[max_usuarios];
+		personas[] pArray = new personas[max_usuarios];
+		personas[] temporalArray = new personas[max_usuarios];
 
 		do {
-			persona pu = new persona();
+			personas pu = new personas();
 
 			System.out.println(
 					"Bienvenido a tu denUNcia, el portal diseñado por y para que los estudiantes sean atendidos oportunamente");
@@ -34,8 +36,9 @@ public class portaldenuncias {
 
 			String inicio = lector.nextLine();
 			if (inicio.equalsIgnoreCase("si")) {
-				System.out.println("Indique el usuario y la contraseña");
+				System.out.println("Indique el usuario ");
 				String adminentr = lector.nextLine();
+				System.out.println("Indique la contraseña ");
 				String contraadmin = lector.nextLine();
 				if (contraadmin.equals(contradmin) && adminentr.equals(admin)) {
 					System.out.println(
@@ -51,23 +54,26 @@ public class portaldenuncias {
 					case "Ordenar":
 						System.out.println(
 								"Estimado admin " + admin + "a continuación ordenara todas las denuncias del portal");
-						System.out.println("Desea ordenar según \"FECHA DE RECEPCION DE LA DENUNCIA \" o por \"EDAD\"");
+						System.out.println("Desea ordenar según \" FECHA \" o por \"EDAD\"");
 
 						String orden = lector.nextLine();
-						if (orden.equalsIgnoreCase("FECHA DE RECEPCION DE LA DENUNCIA")) {
-							System.out.println("Desea ordenar por \"MAS RECIENTES PRIMERO\" o \"MAS ANTIGUOS PRIMERO\"");
+
+						if (orden.equalsIgnoreCase("FECHA")) {
+							System.out
+									.println("Desea ordenar por \"MAS RECIENTES PRIMERO\" o \"MAS ANTIGUOS PRIMERO\"");
 							String orden_fecha = lector.nextLine();
 							if (orden_fecha.equalsIgnoreCase("MAS ANTIGUOS PRIMERO")) {
 								do {
 									contador = 0;
 									int temporal;
 									for (int c = 0, d = 1; c < pArray.length; c++, d++) {
-										persona cp = new persona();
-										persona cd = new persona();
+										personas cp = new personas();
+										personas cd = new personas();
 
 										if ((pArray[c] != null) && (pArray[d] != null)) {
 											if (cp.getFecha(pArray[c].fecha).before(cd.getFecha(pArray[d].fecha))) {
-											} else if (cp.getFecha(pArray[c].fecha).after(cd.getFecha(pArray[d].fecha))) {
+											} else if (cp.getFecha(pArray[c].fecha)
+													.after(cd.getFecha(pArray[d].fecha))) {
 												temporal = d;
 												temporalArray[temporal] = pArray[d];
 												pArray[d] = pArray[c];
@@ -80,12 +86,13 @@ public class portaldenuncias {
 									}
 								} while (contador > 0);
 
-								for (persona g : pArray) {
+								for (personas g : pArray) {
 									if (g != null) {
 										System.out.println("Denuncia presentada por \"" + g.nombre
 												+ "\", identificado con el documento \"" + g.cedula + "\", hecha en \""
 												+ g.ciudad + "\", el \"" + g.fecha + "\", cuya descripción es \""
-												+ g.descripcion + "\".");
+												+ g.descripcion + "\" el numero de contacto del denunciante es :"
+												+ g.contacto);
 									} else
 										break;
 								}
@@ -95,12 +102,13 @@ public class portaldenuncias {
 									contador = 0;
 									int temporal;
 									for (int c = 0, d = 1; c < pArray.length; c++, d++) {
-										persona cp = new persona();
-										persona cd = new persona();
+										personas cp = new personas();
+										personas cd = new personas();
 
 										if ((pArray[c] != null) && (pArray[d] != null)) {
 											if (cp.getFecha(pArray[c].fecha).after(cd.getFecha(pArray[d].fecha))) {
-											} else if (cp.getFecha(pArray[c].fecha).before(cd.getFecha(pArray[d].fecha))) {
+											} else if (cp.getFecha(pArray[c].fecha)
+													.before(cd.getFecha(pArray[d].fecha))) {
 												temporal = d;
 												temporalArray[temporal] = pArray[d];
 												pArray[d] = pArray[c];
@@ -113,30 +121,27 @@ public class portaldenuncias {
 									}
 								} while (contador > 0);
 
-								for (persona g : pArray) {
+								for (personas g : pArray) {
 									if (g != null) {
 										System.out.println("Denuncia presentada por \"" + g.nombre
 												+ "\", identificado con el documento \"" + g.cedula + "\", hecha en \""
 												+ g.ciudad + "\", el \"" + g.fecha + "\", cuya descripción es \""
-												+ g.descripcion + "\".");
+												+ g.descripcion + "\" el numero de contacto del denunciante es:"
+												+ g.contacto);
 									} else
 										break;
 								}
 
 							}
 						}
-
-						break;
-					case "Imprimir":
-						System.out.println(
-								"Estimado admin " + admin + "a continuación imprimira todas las denuncias del portal");
-						break;
 					case "borrar":
 						System.out
 								.println("Estimado admin " + admin + "a continuación borrará las denuncias del portal");
 						break;
 
 					}
+				} else {
+					System.out.println("Usuario y/o contraseña erroneos ");
 				}
 			}
 
@@ -148,13 +153,14 @@ public class portaldenuncias {
 				pu.setNombre(lector.nextLine());
 
 				System.out.println(" Bienvenido, " + pu.getNombre(pu.nombre)
-						+ " ¿Desea ingresar una denuncia, consultar el estado de una,  cerrar sesión o solicitar ayuda ? ( RESPONDA CON \"consultar\", con \"denunciar\", o con \"ayuda\" según sea su caso ( sin espacios )) ");
+						+ " ¿Desea ingresar una denuncia, consultar el estado de una,  cerrar sesión o solicitar ayuda ? ( RESPONDA CON \"consultar\", con \"denunciar\", con \"finalizar\" o con \"ayuda\" según sea su caso ( sin espacios )) ");
 
 				String respuesta = lector.nextLine();
 
 				if (respuesta.equalsIgnoreCase("consultar")) {
 
-					System.out.println("Digite su numero de identificación (Cedula de ciudadania)");
+					System.out.println(
+							"Digite su numero de identificación Cedula de ciudadania, tajeta de identidad, registro civil, pasaporte, etc");
 
 					pu.setCedula(lector.nextInt());
 
@@ -165,13 +171,15 @@ public class portaldenuncias {
 									+ "\" la ciudad en que sucedio el problema:\"" + pArray[i].ciudad
 									+ "\" su tipo de denuncia fue: \"" + pArray[i].tipoDenuncia
 									+ "\"  lo que sucedio fue: \"" + pArray[i].descripcion
-									+ "y la fecha de ingreso de su denuncia fue" + pArray[i].fecha);
+									+ ", la fecha de ingreso de su denuncia fue" + pArray[i].fecha
+									+ "y su numero de contacto es " + pArray[i].contacto);
 							break;
 						}
 
 					}
 					if (i >= max_usuarios) {
-						System.out.println("No se encontró una denuncia con ese número de documento");
+						System.out
+								.println("No se encontró una denuncia con ese número de documento, intente nuevamente");
 					}
 
 				}
@@ -181,9 +189,8 @@ public class portaldenuncias {
 					System.out.println("Bienvenido al servicio de denuncias " + pu.nombre
 							+ ", a continuación se iniciará el proceso para registrar una denuncia");
 
-					// for (tamano = 0; tamano <= usuario.length; tamano++){
-
-					System.out.println("Digite su cedula de ciudadania");
+					System.out.println(
+							"Digite su numero de documento (cedula de ciudadania, tarjeta de identidad, registro civil, pasaporte, etc.)");
 					pu.setCedula(lector.nextInt());
 
 					String prueba = lector.nextLine();
@@ -192,9 +199,11 @@ public class portaldenuncias {
 					pu.setEdad(lector.nextLine());
 
 					System.out.println("Escriba el nombre de la ciudad donde tuvo lugar el suceso ");
+
 					pu.setCiudad(lector.nextLine());
 
 					System.out.println("¿Qué suceso fue? (robo, estafa, engaño, abuso, otro)");
+
 					pu.setTipoDenuncia(lector.nextLine());
 
 					System.out.println("Describa brevemente lo que sucedio:");
@@ -202,85 +211,117 @@ public class portaldenuncias {
 
 					System.out.println("Ingrese la fecha de hoy en formato AAAA,MM,DD ");
 					pu.setFecha(lector.nextLine());
-					// }
 
-					System.out.println("Entonces para formalizar la denuncia le recordaremos lo que ha escrito:");
+					System.out.println("Ingrese por favor un numero telefonico de contacto ejemplo: 3145607612");
+					pu.setContaco(lector.nextLine());
+
+					System.out.println("Para formalizar la denuncia le recordaremos lo que ha escrito:");
 
 					System.out.println("Su nombre es:\"" + pu.nombre + "\" su cedula es:\"" + pu.cedula
 							+ "\" su edad: \"" + pu.edad + "\" la ciudad en que sucedio el problema:\"" + pu.ciudad
 							+ "\" su tipo de denuncia fue: \"" + pu.tipoDenuncia + "\"  lo que sucedio fue: \""
-							+ pu.descripcion + "\" y la fecha del registro de la denuncia es " + pu.fecha + "\" ");
-
-					// do
+							+ pu.descripcion + "\" y la fecha del registro de la denuncia es " + pu.fecha
+							+ "\" para comunicarse con usted se tiene el numero " + pu.contacto);
 
 					System.out.println(
-							"Si estos son los datos correctos escriba SI (en mayusculas y sin espacios) o NO (en mayusculas y sin espacios) si hay algun error");
+							"Si estos son los datos correctos escriba SI  o NO en caso de que haya  algun error");
 
 					String respuesta2 = lector.nextLine();
 
 					if (respuesta2.equalsIgnoreCase("SI")) {
 
-						System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
+						System.out.println(
+								"Su denuncia ya ha sido cargada, gracias por visitar el portal, recuerde que puede comunicarse con nosotros a travez de los siguientes medios "
+								+ "Correo electronico: "
+								+ "juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co. Numero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293 "
+										);
+						
 
 					} else if (respuesta2.equalsIgnoreCase("NO")) {
 
 						System.out.println(
-								"Registre que dato fue el incorrecto (edad,ciudad,suceso, descripcion,fecha) ");
+								"Registre que dato fue el incorrecto (edad,ciudad,suceso, descripcion,fecha,contacto) ");
 
 						String respuesta3 = lector.nextLine();
 
 						if (respuesta3.equalsIgnoreCase("edad")) {
-							System.out.println("Ingrese la correción del dato(edad)");
+							System.out.println("Usted seleccionó edad. Ingrese la correción del dato(edad)");
 							pu.setEdad(lector.nextLine());
 							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
 
-						} else if (respuesta3.equals("ciudad")) {
-							System.out.println("Ingrese la correción del dato(ciudad)");
+						} else if (respuesta3.equalsIgnoreCase("ciudad")) {
+							System.out.println(" Usted seleccionó ciudad.Ingrese la correción del dato(ciudad)");
 							pu.setCiudad(lector.nextLine());
 							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
 
-						} else if (respuesta3.equals("suceso")) {
-							System.out.println("Ingrese la correción del dato(tipo de denuncia)");
+						} else if (respuesta3.equalsIgnoreCase("suceso")) {
+							System.out.println(
+									"Usted seleccionó suceso. Ingrese la correción del dato(tipo de denuncia)");
 							pu.setTipoDenuncia(lector.nextLine());
 							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
 
-						} else if (respuesta3.equals("descripcion")) {
-							System.out.println("Ingrese la correción del dato(descripcion)");
+						} else if (respuesta3.equalsIgnoreCase("descripcion")) {
+							System.out
+									.println("Usted seleccionó descripción.Ingrese la correción del dato(descripcion)");
 							pu.setDescripcion(lector.nextLine());
 							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
 
-						} else if (respuesta3.equals("fecha")) {
-							System.out.println("Ingrese la correción del dato(fecha en formato AAAA,MM,DD)");
+						} else if (respuesta3.equalsIgnoreCase("fecha")) {
+							System.out.println(
+									" Usted selecciono fecha. Ingrese la correción del dato( recuerde el formato requerido AAAA,MM,DD)");
 							pu.setFecha(lector.nextLine());
 
 							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
 
+						} else if (respuesta3.equalsIgnoreCase("contacto")) {
+							System.out.println(" Usted selecciono contacto. Ingrese la correción del dato");
+							pu.setContaco(lector.nextLine());
+							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
 						}
+						
+						/* System.out.println("Para cofirmar sus datos son los siguientes:");
+						System.out.println("Su nombre es:\"" + pu.nombre + "\" su cedula es:\"" + pu.cedula
+								+ "\" su edad: \"" + pu.edad + "\" la ciudad en que sucedio el problema:\"" + pu.ciudad
+								+ "\" su tipo de denuncia fue: \"" + pu.tipoDenuncia + "\"  lo que sucedio fue: \""
+								+ pu.descripcion + "\" y la fecha del registro de la denuncia es " + pu.fecha
+								+ "\" para comunicarse con usted se tiene el numero " + pu.contacto); */
+
 					}
+					
 					pArray[persona] = pu;
+
 					++persona;
+
+
+					
 
 				} else if (respuesta.equalsIgnoreCase("finalizar")) {
 
-					System.out.println("Gracias por visitar el portal, hasta luego.");
+					System.out.println("Gracias por visitar el portal tu denUNcia" + pu.nombre + ", hasta luego.");
+					
+					
 
-				} else if (respuesta.equalsIgnoreCase("ayudaaaaaa")) {
+				} else if (respuesta.equalsIgnoreCase("ayuda")) {
 
 					System.out.println(
-							"Para comunicarse con el administrador del portal cuenta con las siguientes opciones:"
-									+ Arrays.toString(comunicacion));
+							"Para comunicarse con el administrador del portal cuenta con las siguientes opciones: Correo electronico: \"\r\n"
+							+ " \"juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co. Numero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293"
+								);
 
 					System.out.println("Pronto tendra respuesta. Gracias por su atencion");
+					
 				}
 
 			}
-
-		} while (persona < max_usuarios);
+			
+		} 
+		while (persona < max_usuarios);
 
 		System.out.println(
-				"Estimado usuari,lamentamos informarle que el portal no pudo cargar su denuncia exitosamente debido a que se alcanzo la capacidad máxima del portal. Comuniquese con un administrador. ");
-		System.out.println("Para comunicarse con el administrador del portal cuenta con las siguientes opciones:"
-				+ Arrays.toString(comunicacion));
+				"Estimado usuario,lamentamos informarle que el portal no pudo cargar su denuncia exitosamente debido a que se alcanzo la capacidad máxima del portal. Comuniquese con un administrador. ");
+		System.out.println("Para comunicarse con el administrador del portal cuenta con las siguientes opciones: Correo electronico: \"\r\n"
+				+ " \"juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co. Numero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293"
+				);
 
 		System.out.println("Pronto tendra respuesta. Gracias por su atencion");
 		lector.close();
