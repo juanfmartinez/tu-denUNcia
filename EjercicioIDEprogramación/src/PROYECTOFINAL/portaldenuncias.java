@@ -7,7 +7,6 @@ public class portaldenuncias {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner lector = new Scanner(System.in);
-		Scanner lector2 = new Scanner (System.in);
 		int i;
 
 		int max_usuarios = 10;
@@ -148,20 +147,22 @@ public class portaldenuncias {
 					System.out.println("Digite su cedula de ciudadania");
 					pu.setCedula(lector.nextInt());
 
+					String prueba = lector.nextLine();
+					
 					System.out.println("Digite su edad ");
-					pu.setEdad(lector2.nextLine());
+					pu.setEdad(lector.nextLine());
 
 					System.out.println("Escriba el nombre de la ciudad donde tuvo lugar el suceso ");
 					pu.setCiudad(lector.nextLine());
 
 					System.out.println("¿Qué suceso fue? (robo, estafa, engaño, abuso, otro)");
-					pu.setTipoDenuncia(lector2.nextLine());
+					pu.setTipoDenuncia(lector.nextLine());
 
 					System.out.println("Describa brevemente lo que sucedio:");
 					pu.setDescripcion(lector.nextLine());
 
 					System.out.println("Ingrese la fecha de hoy en formato AAAA,MM,DD ");
-					pu.setFecha(lector2.nextLine());
+					pu.setFecha(lector.nextLine());
 					// }
 
 					System.out.println("Entonces para formalizar la denuncia le recordaremos lo que ha escrito:");
@@ -170,7 +171,9 @@ public class portaldenuncias {
 							+ "\" su edad: \"" + pu.edad + "\" la ciudad en que sucedio el problema:\"" + pu.ciudad
 							+ "\" su tipo de denuncia fue: \"" + pu.tipoDenuncia + "\"  lo que sucedio fue: \""
 							+ pu.descripcion + "\" y la fecha del registro de la denuncia es " + pu.fecha + "\" ");
-
+ 
+					//do
+					
 					System.out.println(
 							"Si estos son los datos correctos escriba SI (en mayusculas y sin espacios) o NO (en mayusculas y sin espacios) si hay algun error");
 
