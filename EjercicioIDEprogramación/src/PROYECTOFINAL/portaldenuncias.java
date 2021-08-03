@@ -11,7 +11,7 @@ public class portaldenuncias {
 
 		int i;
 
-		int max_usuarios = 10;
+		int max_usuarios = 10000;
 		int persona = 0;
 		int contador = 0;
 
@@ -32,6 +32,12 @@ public class portaldenuncias {
 
 			System.out.println(
 					"Bienvenido a tu denUNcia, el portal diseñado por y para que los estudiantes sean atendidos oportunamente");
+			System.out.println("Tu denUNcia es un proyecto desarrollado por 3 estudiantes de ingeniería química de la universidad nacional de Colombia");
+			System.out.println("con el proposito de asegurar la adecuada respuesta a las muchas denuncias que se hacen hoy en día y suelen quedar en el olvido");
+			System.out.println("es así como el portal pretende dar cumplimiento adecuado a los derechos fundamentales y evita que en los casos que se vean incumplidos");
+			System.out.println("se quede en el olvido");
+			System.out.println(" ");
+			
 			System.out.println(" ¿Desea acceder a las funciones avanzadas como administrador?(SI o NO)");
 
 			String inicio = lector.nextLine();
@@ -291,8 +297,10 @@ public class portaldenuncias {
 							System.out.println(" Usted selecciono contacto. Ingrese la correción del dato");
 							pu.setContaco(lector.nextLine());
 							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
+							
 						} else if (respuesta3.equalsIgnoreCase("victimario")) {
 							System.out.println(" Usted selecciono victimario. Ingrese la correción del dato");
+							
 							pu.setVictimario(lector.nextLine());
 							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
 						}
