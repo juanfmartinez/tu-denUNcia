@@ -14,6 +14,7 @@ public class portaldenuncias {
 		int max_usuarios = 10000;
 		int persona = 0;
 		int contador = 0;
+		int contador1 =0;
 
 		String admin = "ELBICHO";
 		String contradmin = "chiguiro24";
@@ -143,14 +144,18 @@ public class portaldenuncias {
 												+ "\", identificado con el documento \"" + g.cedula + "\", hecha en \""
 												+ g.ciudad + "\", el \"" + g.fecha + "\", cuya descripción es \""
 												+ g.descripcion + "\" el numero de contacto del denunciante es:"
-												+ g.contacto + "el nombre y/o descripcion del victimario es "
+												+ g.contacto + " el nombre y/o descripcion del victimario es "
 												+ g.victimario);
 									} else
 										break;
 								}
 
 							}
-						}
+						}else if (orden.equalsIgnoreCase("edad")) {
+							
+							} else
+									break;
+						
 					case "borrar":
 						System.out
 								.println("Estimado admin " + admin + "a continuación borrará las denuncias del portal");
@@ -190,7 +195,7 @@ public class portaldenuncias {
 									+ "\"  lo que sucedio fue: \"" + pArray[i].descripcion
 									+ ", la fecha de ingreso de su denuncia fue" + pArray[i].fecha
 									+ "y su numero de contacto es " + pArray[i].contacto
-									+ "el nombre y/o descripcion del victimario es " + pArray[i].victimario);
+									+ " el nombre y/o descripcion del victimario es " + pArray[i].victimario);
 							break;
 						}
 
@@ -243,7 +248,7 @@ public class portaldenuncias {
 							+ "\" su tipo de denuncia fue: \"" + pu.tipoDenuncia + "\"  lo que sucedio fue: \""
 							+ pu.descripcion + "\" y la fecha del registro de la denuncia es " + pu.fecha
 							+ "\" para comunicarse con usted se tiene el numero " + pu.contacto
-							+ "el nombre y/o descripcion del victimario es " + pu.victimario);
+							+ " el nombre y/o descripcion del victimario es " + pu.victimario);
 
 					System.out.println(
 							"Si estos son los datos correctos escriba SI  o NO en caso de que haya  algun error");
@@ -253,9 +258,9 @@ public class portaldenuncias {
 					if (respuesta2.equalsIgnoreCase("SI")) {
 
 						System.out.println(
-								"Su denuncia ya ha sido cargada, gracias por visitar el portal, recuerde que puede comunicarse con nosotros a travez de los siguientes medios "
-										+ "Correo electronico: "
-										+ "juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co. Numero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293 ");
+								"Su denuncia ya ha sido cargada, gracias por visitar el portal, recuerde que puede comunicarse con nosotros a travez de los siguientes medios \\n"
+										+ "Correo electronico: \\n "
+										+ "juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co. \\nNumero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293 ");
 
 					} else if (respuesta2.equalsIgnoreCase("NO")) {
 
@@ -311,7 +316,7 @@ public class portaldenuncias {
 								+ "\" su tipo de denuncia fue: \"" + pu.tipoDenuncia + "\"  lo que sucedio fue: \""
 								+ pu.descripcion + "\" y la fecha del registro de la denuncia es " + pu.fecha
 								+ "\" para comunicarse con usted se tiene el numero " + pu.contacto
-								+ "el nombre y/o descripcion del victimario es " + pu.victimario);
+								+ "  el nombre y/o descripcion del victimario es  " + pu.victimario);
 
 					}
 
@@ -327,7 +332,7 @@ public class portaldenuncias {
 
 					System.out.println(
 							"Para comunicarse con el administrador del portal cuenta con las siguientes opciones: Correo electronico: \"\r\n"
-									+ " \"juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co. Numero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293");
+									+ " \"juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co. \n Numero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293");
 
 					System.out.println("Pronto tendra respuesta. Gracias por su atencion");
 
@@ -335,13 +340,13 @@ public class portaldenuncias {
 
 			}
 
-		} while (persona < max_usuarios);
+		} while (persona <= max_usuarios);
 
 		System.out.println(
 				"Estimado usuario,lamentamos informarle que el portal no pudo cargar su denuncia exitosamente debido a que se alcanzo la capacidad máxima del portal. Comuniquese con un administrador. ");
 		System.out.println(
 				"Para comunicarse con el administrador del portal cuenta con las siguientes opciones: Correo electronico: \"\r\n"
-						+ " \"juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co. Numero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293");
+						+ " \"juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co.\\n Numero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293");
 
 		System.out.println("Pronto tendra respuesta. Gracias por su atencion");
 		lector.close();
