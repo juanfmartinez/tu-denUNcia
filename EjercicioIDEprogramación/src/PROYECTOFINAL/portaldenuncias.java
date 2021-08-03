@@ -62,7 +62,7 @@ public class portaldenuncias {
 						for (personas g : pArray) {
 							if (g != null) {
 								System.out.println("Denuncia presentada por \"" + g.nombre
-										+ "\", identificado con el documento \"" + g.cedula + "\", hecha en \""
+										+ "\", identificado con el documento \"" + g.cedula +"la edad del denunciante es de "+g.edad+ "\", hecha en \""
 										+ g.ciudad + "\", el \"" + g.fecha + "\", cuya descripción es \""
 										+ g.descripcion + "\" el numero de contacto del denunciante es:" + g.contacto
 										+ "el nombre y/o descripcion del victimario es " + g.victimario);
@@ -108,7 +108,7 @@ public class portaldenuncias {
 								for (personas g : pArray) {
 									if (g != null) {
 										System.out.println("Denuncia presentada por \"" + g.nombre
-												+ "\", identificado con el documento \"" + g.cedula + "\", hecha en \""
+												+ "\", identificado con el documento \"" + g.cedula + "la edad del denunciante es de "+g.edad+ "\", hecha en \""
 												+ g.ciudad + "\", el \"" + g.fecha + "\", cuya descripción es \""
 												+ g.descripcion + "\" el numero de contacto del denunciante es :"
 												+ g.contacto);
@@ -143,7 +143,7 @@ public class portaldenuncias {
 								for (personas g : pArray) {
 									if (g != null) {
 										System.out.println("Denuncia presentada por \"" + g.nombre
-												+ "\", identificado con el documento \"" + g.cedula + "\", hecha en \""
+												+ "\", identificado con el documento \"" + g.cedula +"la edad del denunciante es de "+g.edad+ "\", hecha en \""
 												+ g.ciudad + "\", el \"" + g.fecha + "\", cuya descripción es \""
 												+ g.descripcion + "\" el numero de contacto del denunciante es:"
 												+ g.contacto + " el nombre y/o descripcion del victimario es "
@@ -179,10 +179,11 @@ public class portaldenuncias {
 								for (personas h : pArray) {
 									if (h != null) {
 										System.out.println("Denuncia presentada por \"" + h.nombre
-												+ "\", identificado con el documento \"" + h.cedula + "\", hecha en \""
+												+ "\", identificado con el documento \"" + h.cedula +"la edad del denunciante es de "+h.edad+ "\", hecha en \""
 												+ h.ciudad + "\", el \"" + h.fecha + "\", cuya descripción es \""
 												+ h.descripcion + "\" el numero de contacto del denunciante es:"
-												+ h.contacto);
+												+ h.contacto+ " el nombre y/o descripcion del victimario es "
+												+ h.victimario);
 									} else
 										break;
 								}
@@ -209,7 +210,7 @@ public class portaldenuncias {
 							for (personas h : pArray) {
 								if (h != null) {
 									System.out.println("Denuncia presentada por \"" + h.nombre
-											+ "\", identificado con el documento \"" + h.cedula + "\", hecha en \""
+											+ "\", identificado con el documento \"" + h.cedula + "la edad del denunciante es de "+h.edad+"\", hecha en \""
 											+ h.ciudad + "\", el \"" + h.fecha + "\", cuya descripción es \""
 											+ h.descripcion + "\" el numero de contacto del denunciante es:"
 											+ h.contacto);
