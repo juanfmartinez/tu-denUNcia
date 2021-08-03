@@ -4,7 +4,6 @@ import java.util.*;
 
 public class portaldenuncias {
 
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner lector = new Scanner(System.in);
@@ -14,7 +13,7 @@ public class portaldenuncias {
 		int max_usuarios = 10000;
 		int persona = 0;
 		int contador = 0;
-		int contador1 =0;
+		int contador1 = 0;
 
 		String admin = "ELBICHO";
 		String contradmin = "chiguiro24";
@@ -33,12 +32,15 @@ public class portaldenuncias {
 
 			System.out.println(
 					"Bienvenido a tu denUNcia, el portal diseñado por y para que los estudiantes sean atendidos oportunamente");
-			System.out.println("Tu denUNcia es un proyecto desarrollado por 3 estudiantes de ingeniería química de la universidad nacional de Colombia");
-			System.out.println("con el proposito de asegurar la adecuada respuesta a las muchas denuncias que se hacen hoy en día y suelen quedar en el olvido");
-			System.out.println("es así como el portal pretende dar cumplimiento adecuado a los derechos fundamentales y evita que en los casos que se vean incumplidos");
+			System.out.println(
+					"Tu denUNcia es un proyecto desarrollado por 3 estudiantes de ingeniería química de la universidad nacional de Colombia");
+			System.out.println(
+					"con el proposito de asegurar la adecuada respuesta a las muchas denuncias que se hacen hoy en día y suelen quedar en el olvido");
+			System.out.println(
+					"es así como el portal pretende dar cumplimiento adecuado a los derechos fundamentales y evita que en los casos que se vean incumplidos");
 			System.out.println("se quede en el olvido");
 			System.out.println(" ");
-			
+
 			System.out.println(" ¿Desea acceder a las funciones avanzadas como administrador?(SI o NO)");
 
 			String inicio = lector.nextLine();
@@ -151,11 +153,73 @@ public class portaldenuncias {
 								}
 
 							}
-						}else if (orden.equalsIgnoreCase("edad")) {
-							
-							} else
+						} else if (orden.equalsIgnoreCase("edad")) {
+							System.out
+									.println("Desea organizar por \"MÁS JOVENES PRIMERO\" o \"MAS LONGEVOS PRIMERO\".");
+							String orden2 = lector.nextLine();
+							if (orden2.equalsIgnoreCase("MAS JOVENES PRIMERO")) {
+								do {
+									contador = 0;
+									int temporal;
+									for (int c = 0, d = 1; c < pArray.length; c++, d++) {
+										persona ca = new persona();
+										persona cb = new persona();
+										if ((pArray[c] != null) && (pArray[d] != null)) {
+											if (Integer.parseInt(pArray[c].edad) > Integer.parseInt(pArray[d].edad)) {
+												temporal = d;
+												temporalArray[temporal] = pArray[d];
+												pArray[d] = pArray[c];
+												pArray[c] = temporalArray[temporal];
+												contador++;
+											}
+										}
+									}
+								} while (contador > 0);
+
+								for (personas h : pArray) {
+									if (h != null) {
+										System.out.println("Denuncia presentada por \"" + h.nombre
+												+ "\", identificado con el documento \"" + h.cedula + "\", hecha en \""
+												+ h.ciudad + "\", el \"" + h.fecha + "\", cuya descripción es \""
+												+ h.descripcion + "\" el numero de contacto del denunciante es:"
+												+ h.contacto);
+									} else
+										break;
+								}
+							} else if (orden2.equalsIgnoreCase("MAS LONGEVOS PRIMERO")) {
+								do {
+									contador = 0;
+									int temporal;
+									for (int c = 0, d = 1; c < pArray.length; c++, d++) {
+										persona ca = new persona();
+										persona cb = new persona();
+										if ((pArray[c] != null) && (pArray[d] != null)) {
+											if (Integer.parseInt(pArray[c].edad) < Integer.parseInt(pArray[d].edad)) {
+												temporal = d;
+												temporalArray[temporal] = pArray[d];
+												pArray[d] = pArray[c];
+												pArray[c] = temporalArray[temporal];
+												contador++;
+											}
+										}
+									}
+								} while (contador > 0);
+
+							}
+							for (personas h : pArray) {
+								if (h != null) {
+									System.out.println("Denuncia presentada por \"" + h.nombre
+											+ "\", identificado con el documento \"" + h.cedula + "\", hecha en \""
+											+ h.ciudad + "\", el \"" + h.fecha + "\", cuya descripción es \""
+											+ h.descripcion + "\" el numero de contacto del denunciante es:"
+											+ h.contacto);
+								} else
 									break;
-						
+							}
+
+						} else
+							break;
+
 					case "borrar":
 						System.out
 								.println("Estimado admin " + admin + "a continuación borrará las denuncias del portal");
@@ -302,10 +366,10 @@ public class portaldenuncias {
 							System.out.println(" Usted selecciono contacto. Ingrese la correción del dato");
 							pu.setContaco(lector.nextLine());
 							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
-							
+
 						} else if (respuesta3.equalsIgnoreCase("victimario")) {
 							System.out.println(" Usted selecciono victimario. Ingrese la correción del dato");
-							
+
 							pu.setVictimario(lector.nextLine());
 							System.out.println("Su denuncia ya esta siendo cargada, en breve recibira mas informacion");
 						}
@@ -353,4 +417,3 @@ public class portaldenuncias {
 
 	}
 }
-	
