@@ -1,6 +1,8 @@
 package PROYECTOFINAL;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class portaldenuncias {
 
@@ -17,6 +19,7 @@ public class portaldenuncias {
 
 		String admin = "ELBICHO";
 		String contradmin = "chiguiro24";
+		String email2;
 
 		String[][] comunicacion = new String[3][3];
 		comunicacion[0][0] = "Correo electronico";
@@ -40,6 +43,13 @@ public class portaldenuncias {
 					"es así como el portal pretende dar cumplimiento adecuado a los derechos fundamentales y evita que en los casos que se vean incumplidos");
 			System.out.println("se quede en el olvido");
 			System.out.println(" ");
+			System.out.println("Para poder acceder a la plataforma introduzca su correo institucional: ");
+			email2 = lector.nextLine();
+			Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+							+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+			String[] Arrayss = email2.split("@");
+			if (ValidarMail(email2) == true) {
+			if (Arrayss[1].equals("unal.edu.co")) {
 
 			System.out.println(" ¿Desea acceder a las funciones avanzadas como administrador?(SI o NO)");
 
@@ -416,5 +426,23 @@ public class portaldenuncias {
 		System.out.println("Pronto tendra respuesta. Gracias por su atencion");
 		lector.close();
 
+	}
+}while (persona <= max_usuarios);
+
+		System.out.println(
+				"Estimado usuario,lamentamos informarle que el portal no pudo cargar su denuncia exitosamente debido a que se alcanzo la capacidad máxima del portal. Comuniquese con un administrador. ");
+		System.out.println(
+				"Para comunicarse con el administrador del portal cuenta con las siguientes opciones: Correo electronico: \"\r\n"
+						+ " \"juamartinezro@unal.edu.co - cospinaho@unal.edu.co - anbarreras@unal.edu.co.\\n Numero telefónico y mensaje de texto 3186517640 - 3219113875 - 3114671293");
+
+		System.out.println("Pronto tendra respuesta. Gracias por su atencion");
+		lector.close();
+	}
+	public static boolean ValidarMail(String email) {
+	    // Patron para validar el email
+	    Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)(\\.[A-Za-z]{2,})$");
+
+	    Matcher mather = pattern.matcher(email);
+	    return mather.find();
 	}
 }
