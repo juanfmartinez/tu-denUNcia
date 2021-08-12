@@ -40,7 +40,7 @@ public class personas {
 		}
 		
 		
-		public void setContaco (String contacto) {
+		public void setContacto (String contacto) {
 			this.contacto=contacto;
 		}
 		public String getContacto(String contacto) {
