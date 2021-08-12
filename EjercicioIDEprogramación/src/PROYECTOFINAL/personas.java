@@ -17,6 +17,7 @@ public class personas {
 		public String contacto;
 		public String victimario;
 		public String Status;
+		public String derecho;
 		
 		public void setStatus(String Status) {
 			this.Status=Status;
@@ -47,7 +48,13 @@ public class personas {
 			return contacto;
 			
 		}
-		
+		public void setderecho (String derecho) {
+			this.derecho=derecho;
+		}
+		public String getderecho(String derecho) {
+			return derecho;
+			
+		}
 		
 		
 		public void setCedula(int cedula) {
