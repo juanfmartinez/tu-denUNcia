@@ -16,6 +16,14 @@ public class personas {
 		public String descripcion;
 		public String contacto;
 		public String victimario;
+		public String Status;
+		
+		public void setStatus(String Status) {
+			this.Status=Status;
+		}
+		public String getStatus(String Status) {
+			return Status;
+		}
 		
 		public void setVictimario(String victimario) {
 			this.victimario=victimario;
