@@ -15,7 +15,6 @@ public class portaldenuncias {
 		int max_usuarios = 100000;
 		int persona = 0;
 		int contador = 0;
-		int contador1 = 0;
 
 		String admin = "ELBICHO";
 		String contradmin = "chiguiro24";
