@@ -31,8 +31,6 @@ public class personas {
 		String code = "UN" + Cedula + "" + Fecha + "" + derecho;
 		
 		return code;
-		
-		
 	}
 	public void setCode(String code) {
 		this.code = code;
