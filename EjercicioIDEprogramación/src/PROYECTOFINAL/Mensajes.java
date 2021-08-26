@@ -1,3 +1,8 @@
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
 public class Mensajes {
 
 	public static final int MENSAJE_AUTENTICACION_EMAIL = 1;
